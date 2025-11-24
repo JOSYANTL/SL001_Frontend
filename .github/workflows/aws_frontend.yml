@@ -24,44 +24,41 @@
 #    See the documentation for each action used below for the recommended IAM policies for this IAM user,
 #    and best practices on handling the access key credentials.
 
-name: Deploy to Amazon ECS
+  name: Deploy Frontend to EC2
+  on:
+    push:
+      branches:
+        - main
 
-on:
-  push:
-    branches: [ "main" ]
+  permissions:
+    contents: read
 
+  jobs:
+    deploy:
+      name: Deploy to EC2
+      runs-on: ubuntu-latest
 
-permissions:
-  contents: read
-
-jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-
-
-    steps:
-    - name: Deploy to EC2 via ssh
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          password: ${{ secrets.EC2_SSH_KEY}}
-          port: 22
-          script: |
-
-          # 进入根目录
-            cd ~/SL001_Frontend
-                    
-          # 拉取main分支最新版本
-            git fetch origin
-            git reset --hard origin/main
-                    
-          # 进入前端目录
-            cd sl001fr
-                    
-          # 停掉旧容器（如果不存在也不会报错）
-            sudo docker compose down || true
-            
-          # 重新构建并启动新版本
-            sudo docker compose up -d --build
+      steps:
+        - name: Deploy to EC2 via SSH
+          uses: appleboy/ssh-action@v1.0.0
+          with:
+            host: ${{ secrets.EC2_HOST }}
+            username: ${{ secrets.EC2_USER }}
+            key: ${{ secrets.EC2_SSH_KEY }}
+            port: 22
+            script: |
+              # 1. 进入项目根目录
+              cd ~/SL001_Frontend
+              
+              # 2. 拉取 main 最新代码
+              git fetch origin
+              git reset --hard origin/main
+              
+              # 3. 进入前端目录
+              cd sl001fr
+              
+              # 4. 停掉旧容器（没有也不会报错）
+              sudo docker compose down || true
+              
+              # 5. 构建并启动新版本
+              sudo docker compose up -d --build
