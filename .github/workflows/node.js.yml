@@ -26,13 +26,13 @@ jobs:
       with:
         node-version: '20'
         cache: 'npm' # 有了 package-lock.json 这一行就会正常工作
-        cache-dependency-path: 'L001Frontend/sl001fr/package-lock.json'
+        cache-dependency-path: 'SL001Frontend/sl001fr/package-lock.json'
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        working-dependency: 'L001Frontend/sl001fr/package-lock.json'
+        working-dependency: 'SL001Frontend/sl001fr/package-lock.json'
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
