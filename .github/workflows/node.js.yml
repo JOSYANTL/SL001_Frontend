@@ -21,6 +21,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    # 之后才能设置 Node.js 和缓存
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm' # 有了 package-lock.json 这一行就会正常工作
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
