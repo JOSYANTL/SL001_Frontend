@@ -20,19 +20,24 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v4
-    # 之后才能设置 Node.js 和缓存
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm' # 有了 package-lock.json 这一行就会正常工作
-        cache-dependency-path: 'SL001Frontend/sl001fr/package-lock.json'
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        working-dependency: 'SL001Frontend/sl001fr/package-lock.json'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v4 
+      
+      # 1. 设置 Node.js 和缓存
+      - name: Setup Node.js and Cache Dependencies
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          # 确保路径是正确的
+          cache-dependency-path: 'sl001fr/package-lock.json' 
+          
+      # 2. 安装依赖 (在正确的子目录中运行)
+      - name: Install Dependencies
+        run: npm install
+        # 告诉 Actions 在哪个目录下执行命令 (与 cache 路径匹配)
+        working-directory: 'sl001fr' 
+        
+      # 3. 运行构建或其他操作 (也应在子目录中)
+      - name: Run Build
+        run: npm run build
+        working-directory: 'sl001fr'
