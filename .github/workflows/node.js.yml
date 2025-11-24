@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: '20'
         cache: 'npm' # 有了 package-lock.json 这一行就会正常工作
+        cache-dependency-path: 'sl001fr/package-lock.json'
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
