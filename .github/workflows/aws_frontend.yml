@@ -19,14 +19,7 @@
         name: production
         url: http://47.130.160.97
 
-      steps:
-      - name: Create GitHub Deployment
-        uses: chrnorm/deployment-action@v2
-        with:
-          token: ${{ github.token }}
-          environment: production
-          description: "Deploying latest successful CI build to production"
-      
+      steps:      
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1.0.0
         with:
