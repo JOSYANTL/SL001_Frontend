@@ -1,7 +1,7 @@
   name: Deploy Frontend to EC2
   on:
     workflow_run:
-      workflows: ["node.js.yml"]    # CI 脚本的 name
+      workflows: ["Node.js CI"]    # CI 脚本的 name
       types:
         - completed
     push:
