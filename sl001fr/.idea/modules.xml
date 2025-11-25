@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/sl001fr.iml" filepath="$PROJECT_DIR$/sl001fr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sl001fr-vite.iml" filepath="$PROJECT_DIR$/.idea/sl001fr-vite.iml" />
     </modules>
   </component>
 </project>
