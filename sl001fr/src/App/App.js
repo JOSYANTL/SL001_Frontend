@@ -17,11 +17,14 @@ function App() {
         >
           Learn React
         </a>
+          <Button />
       </header>
     </div>
   );
 }
-
+function Button(){
+    return <button>Click me</button>
+}
 export default function SLApp(){
     return <App />
 }
