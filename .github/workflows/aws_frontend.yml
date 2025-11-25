@@ -14,13 +14,22 @@
   jobs:
     deploy:
       if: ${{ github.event.workflow_run.conclusion == 'success' }}   # 只有 CI 成功才继续
-      name: Deploy to EC2
       runs-on: ubuntu-latest
+      environment:
+        name: production
+        url: http://47.130.160.97
 
       steps:
-        - name: Deploy to EC2 via SSH
-          uses: appleboy/ssh-action@v1.0.0
-          with:
+      - name: Create GitHub Deployment
+        uses: chrnorm/deployment-action@v2
+        with:
+          token: ${{ github.token }}
+          environment: production
+          description: "Deploying latest successful CI build to production"
+      
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
             host: ${{ secrets.EC2_HOST }}
             username: ${{ secrets.EC2_USER }}
             key: ${{ secrets.EC2_SSH_KEY }}
