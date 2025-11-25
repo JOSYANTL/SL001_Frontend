@@ -1,11 +1,15 @@
 import React from "react";
-import Top from "../Compononts/Top";
+import Top from "../Components/Top";
 
-function top(){
-    <Top></Top>
-}
+// function top(){
+//     <Top></Top>
+// }
 
 export default function Home(){
-    return top()
+    return (
+      <div>
+          <h1>Home Page</h1>
+      </div>
+    );
 }
 
