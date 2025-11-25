@@ -15,7 +15,7 @@ function Footer(){
 export default function Home(){
     return (
         <div>
-            <NavBar/>
+            <NavBar home={"Welcome"}/>
             <h1>Home Page</h1>
             <Top></Top>
         </div>
