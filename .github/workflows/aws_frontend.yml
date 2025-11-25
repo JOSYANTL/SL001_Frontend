@@ -10,6 +10,8 @@
 
   permissions:
     contents: write
+    deployments: write   # ⭐ 必须有
+    actions: read
 
   jobs:
     deploy:
