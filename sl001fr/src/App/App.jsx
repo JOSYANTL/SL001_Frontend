@@ -1,13 +1,13 @@
 import React from 'react';
-import './App.css';
-import Home from '../Pages/Home';                 // src/Pages/Home.jsx
+import './App.css';               // src/Pages/Home.jsx
 import logo from '../assets/icons/react.svg';     // src/assets/icons/react.svg
+import {Outlet} from "react-router-dom";
 
 function App() {
     return (
         <div className="App">
+            <Outlet />
             <header className="App-header">
-                {/*<Home />*/}
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
                     Edit <code>src/App/App.jsx</code> and save to reload.
