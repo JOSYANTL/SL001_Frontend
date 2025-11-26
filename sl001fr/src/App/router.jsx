@@ -7,10 +7,12 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <SLApp />,
-    },
-    {
-        path: '/home',
-        element: <Home />,
+        children: [
+            {
+                index: true,
+                element: <Home />,
+            },
+        ],
     },
 ]);
 
