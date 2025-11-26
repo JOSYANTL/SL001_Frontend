@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './scss/styles.scss'                // 用你的 App.css
-import { RouterProvider } from 'react-router-dom'
-import router from './App/router.jsx'     // src/App/router.jsx
+import SLRouterProvider from "./App/providers/RouterProvider.jsx";
+import StoreProvider from "./App/providers/StoreProvider.jsx";
+import './scss/styles.scss'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <StoreProvider>
+            <SLRouterProvider />
+        </StoreProvider>
     </React.StrictMode>,
 )
