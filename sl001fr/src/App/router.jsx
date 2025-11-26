@@ -5,11 +5,11 @@ import Home from '../Pages/Home.jsx';    // 额外路由页面
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: '/app',
         element: <SLApp />,
     },
     {
-        path: '/home',
+        path: '/',
         element: <Home />,
     },
 ]);
