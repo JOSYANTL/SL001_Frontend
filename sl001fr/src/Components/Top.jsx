@@ -1,4 +1,6 @@
 import React from "react";
+// import '../scss/styles.scss'
+// import '../App/App.css'
 
 
 export default function Top() {

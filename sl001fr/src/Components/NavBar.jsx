@@ -1,12 +1,14 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 
 function Nav({home = "Home", menu = "Menu",link = "Link", disable = "Disable"}){
+    const navigate = useNavigate();
     console.log(home, menu, link, disable);
         return (
             <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">{home}</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    <a className="navbar-brand" onClick={()=> navigate('/')} href="#">{home}</a>
+                    <button className="navbar-toggler" type="button"  data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -32,6 +34,9 @@ function Nav({home = "Home", menu = "Menu",link = "Link", disable = "Disable"}){
                                     </li>
                                     <li><a className="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={()=> navigate('/about')} href="#">About</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link disabled" aria-disabled="true">{disable}</a>

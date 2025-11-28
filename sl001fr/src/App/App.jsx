@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';               // src/Pages/Home.jsx
+// import '../scss/styles.scss'
 import logo from '../assets/icons/react.svg';     // src/assets/icons/react.svg
 import {Outlet} from "react-router-dom";
 
